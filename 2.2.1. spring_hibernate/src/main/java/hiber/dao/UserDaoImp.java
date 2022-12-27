@@ -1,23 +1,26 @@
 package hiber.dao;
 
-import hiber.model.Car;
 import hiber.model.User;
 import jakarta.persistence.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-
 import jakarta.persistence.TypedQuery;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.List;
 
 @Repository
 public class UserDaoImp implements UserDao {
 
-   @Autowired
+
    private SessionFactory sessionFactory;
+
+   @Autowired
+   public UserDaoImp(SessionFactory sessionFactory) {
+      this.sessionFactory = sessionFactory;
+   }
 
    @Override
    public void add(User user) {
